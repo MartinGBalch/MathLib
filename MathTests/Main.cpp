@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <iostream>
 #include "Test.h"
+#include "vec2.h"
 
 int main()
 {
@@ -22,7 +23,9 @@ int main()
 
 	assert(blend(0, 5, 10) == 50);
 
-	assert(distance(0, 10) == 50);
+	assert((vec2{ 1,1 } + vec2{ 1,0 } == vec2{ 2,1 }));
+
+	
 
 
 
