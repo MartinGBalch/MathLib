@@ -2,21 +2,35 @@
 #include "vec2.h"
 #include <cstdio>
 #include "Transform.h"
+#include "flops.h"
+using namespace sfw;
 
 void main()
 {
-	sfw::initContext();
-	//Transform trans;
-	Transform trans = Transform(400, 300);
-	//Transform trans(400, 300);
+	sfw::initContext(800,800);
+	
 	sfw::setBackgroundColor(BLACK);
 
-	/*trans.postion = vec2{ 400,300 };
-	trans.facing = 0;
-	trans.scale = vec2{ 12,8 };*/
+	
+
+	
 	while (sfw::stepContext())
 	{
-		trans.debugDraw();
+		for (int i = 0; i < 100; ++i)
+		{
+			float x1 = i / 100.f;
+			float x2 = (i + 1) / 100.f;
+
+			float y1 = growFast(x1);
+			float y2 = growFast(x2);
+
+			x1 *= 800;
+			x2 *= 800;
+			y1 *= 800;
+			y2 *= 800;
+
+			drawLine(x1,y1, x2,y2);
+		}
 	}
 
 	sfw::termContext();
