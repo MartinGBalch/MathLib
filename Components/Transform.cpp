@@ -15,6 +15,11 @@ Transform::Transform(float x, float y, float w, float h, float a)
 	facing = a;
 }
 
+vec2 Transform::getUp() const
+{
+	return -perp(getDirection());
+}
+
 vec2 Transform::getDirection() const
 {
 	return fromAngle(facing);
@@ -34,9 +39,9 @@ void Transform::debugDraw()
 	vec2 upEnd2 = position - perp(getDirection()) * 20;
 
 	sfw::drawLine(position.x, position.y, dirEnd.x, dirEnd.y,RED );
-	sfw::drawLine(position.x, position.y, dirEnd2.x, dirEnd2.y, RED);
-	sfw::drawLine(position.x, position.y, upEnd.x, upEnd.y, RED);
-	sfw::drawLine(position.x, position.y, upEnd2.x, upEnd2.y, RED);
+	sfw::drawLine(position.x, position.y, dirEnd2.x, dirEnd2.y,NONE);
+	sfw::drawLine(position.x, position.y, upEnd.x, upEnd.y, NONE);
+	sfw::drawLine(position.x, position.y, upEnd2.x, upEnd2.y, NONE);
 
 	
 	

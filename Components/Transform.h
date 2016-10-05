@@ -15,6 +15,7 @@ public:
 
 	bool tick = false;
 
+	vec2 getUp() const;
 	vec2 getDirection() const;
 	void setDirection(const vec2 &dir);
 

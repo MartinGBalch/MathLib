@@ -27,7 +27,9 @@ void main()
 
 	RigidBody playerRigidbody;
 	playerRigidbody.velocity = vec2{ 0,0 };
-	//sfw::setBackgroundColor(BLACK);
+
+	playerTransform.scale = { 24,24 };
+	sfw::setBackgroundColor(BLACK);
 			
 	while (sfw::stepContext())
 	{
@@ -78,11 +80,12 @@ void main()
 			playerTransform.position.y = H;
 		}
 
-		playerLoco.update(playerRigidbody, deltaTime);
-		playerCTRL.update(playerLoco	);
+		playerCTRL.update(playerLoco);
+		playerLoco.update(playerTransform, playerRigidbody);
 		playerRigidbody.integrate(playerTransform, deltaTime);
 
 		playerTransform.debugDraw();
+		playerRigidbody.debugDraw(playerTransform);
 	}
 
 	sfw::termContext();
