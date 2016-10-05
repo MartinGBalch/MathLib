@@ -97,7 +97,7 @@ float cardinalSpline(float start, float mid, float end, float tightness, float a
 	return h00 * start + h10 * tan0 + h01 * mid + h11 * tan1;
 }
 
-float catRomSpline(float start, float mid, float end)
+float catRomSpline(float start, float mid, float end, float alpha)
 {
-	//return cardinalSpline(start, mid ,.5,);
+	return cardinalSpline(start, mid , end,.5,alpha);
 }
