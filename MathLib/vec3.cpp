@@ -98,3 +98,13 @@ vec3 crossProduct(const vec3 & lhs, const vec3 & rhs)
 				 (lhs.z * rhs.x) - (lhs.x * rhs.z), 
 				 (lhs.x * rhs.y) - (lhs.y * rhs.x)};
 }
+
+float vec3::operator[](unsigned idx) const
+{
+	return v[idx];
+}
+
+float & vec3::operator[](unsigned idx)
+{
+	return v[idx];
+}
