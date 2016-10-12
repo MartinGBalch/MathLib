@@ -20,7 +20,7 @@ void main()
 		mid = { 0, 1100 };
 
 	Transform playerTransform(400, 400);
-	playerTransform.scale = { 5,5 };
+	playerTransform.m_scale = { 5,5 };
 
 	spaceShipLocomotion playerLoco;
 	SpaceshipController playerCTRL;
@@ -28,10 +28,10 @@ void main()
 	RigidBody playerRigidbody;
 	playerRigidbody.velocity = vec2{ 0,0 };
 
-	playerTransform.scale = { 24,24 };
+	playerTransform.m_scale = { 24,24 };
 	sfw::setBackgroundColor(BLACK);
 			
-	while (sfw::stepContext())
+   	while (sfw::stepContext())
 	{
 		float deltaTime = getDeltaTime();
 
@@ -62,22 +62,22 @@ void main()
 			playerRigidbody.angularAcceleration -= 1.0f;
 		}
 */
-		if (playerTransform.position.x > W)
+		if (playerTransform.m_position.x > W)
 		{
-			playerTransform.position.x = 0.0f;
+			playerTransform.m_position.x = 0.0f;
 		}
-		else if (playerTransform.position.x < 0.0f)
+		else if (playerTransform.m_position.x < 0.0f)
 		{
-			playerTransform.position.x = W;
+			playerTransform.m_position.x = W;
 		}
 
-		if (playerTransform.position.y > H)
+		if (playerTransform.m_position.y > H)
 		{
-			playerTransform.position.y = 0.0f;
+			playerTransform.m_position.y = 0.0f;
 		}
-		else if (playerTransform.position.y < 0.0f)
+		else if (playerTransform.m_position.y < 0.0f)
 		{
-			playerTransform.position.y = H;
+			playerTransform.m_position.y = H;
 		}
 
 		playerCTRL.update(playerLoco);

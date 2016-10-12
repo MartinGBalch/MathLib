@@ -30,7 +30,7 @@ bool operator!=(const mat2 &A, const mat2 &B);
 mat2 operator*(const mat2 &A, float B);
 mat2 operator*(float A, const mat2 &B);
 mat2 operator*(const mat2 &A, const mat2 &B);
-mat2 operator*(const mat2 &A, const vec2 &V);
+vec2 operator*(const mat2 &A, const vec2 &V);
 
 float determinate(const mat2 &d);
 mat2 inverse(const mat2 &v);

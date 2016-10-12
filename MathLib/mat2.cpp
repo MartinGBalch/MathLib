@@ -81,22 +81,18 @@ mat2 operator*(const mat2 & A, const mat2 & B)
 		    A.m[1] * B.m[2] + A.m[3] * B.m[3]};
 }
 
-mat2 operator*(const mat2 & A, const vec2 & V)
+vec2 operator*(const mat2 & A, const vec2 & V)
 {
-	return{ ((A.m[0] * V.x) + (A.m[2] * V.x)), ((A.m)) };
+	return vec2{ (A.m[0] * V.x) + (A.m[1] * V.y), 
+				 (A.m[2] * V.x) + (A.m[3] * V.y) };
 }
 
 float determinate(const mat2 & d)
 {
-	return (d.m[0] * d.m[3]) - (d.m[1] * d.m[2]);
+	return float (d.m[0] * d.m[3]) - (d.m[1] * d.m[2]);
 }
 
 mat2 inverse(const mat2 & v)
 {
-	mat2 temp;
-	temp.m[0] = temp.m[3];
-	temp.m[1] = -temp.m[1];
-	temp.m[2] = -temp.m[2];
-	temp.m[3] = temp.m[0];
-	return (1 / (determinate(v)) * temp);
+	return (1 / (determinate(v)) * mat2 { v.m[3], -v.m[1], -v.m[2], v.m[0] });
 }

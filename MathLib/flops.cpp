@@ -6,7 +6,7 @@
 
 bool fequals(float lhs, float rhs)
 {
-	if (fabs(lhs - rhs < FLT_EPSILON))
+	if (fabs(lhs - rhs < 0.00001))
 	{
 		return true;
 	}

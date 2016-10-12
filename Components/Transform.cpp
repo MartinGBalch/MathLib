@@ -1,18 +1,19 @@
 #include "Transform.h"
 #include "sfwdraw.h"
+#include "mat3.h"
 #include <cmath>
 #include <cstdio>
 using namespace sfw;
 
 Transform::Transform(float x, float y, float w, float h, float a) 
 {
-	position.x = x;
-	position.y = y;
+	m_position.x = x;
+	m_position.y = y;
 	
-	scale.x = w;
-	scale.y = h;
+	m_scale.x = w;
+	m_scale.y = h;
 
-	facing = a;
+	m_facing = a;
 }
 
 vec2 Transform::getUp() const
@@ -22,27 +23,48 @@ vec2 Transform::getUp() const
 
 vec2 Transform::getDirection() const
 {
-	return fromAngle(facing);
+	return fromAngle(m_facing);
 }
 
 void Transform::setDirection(const vec2 & dir)
 {
-	facing = angle(dir);
+	m_facing = angle(dir);
 }
 
-void Transform::debugDraw()
+mat3 Transform::getLocalTransform() const
 {
-	sfw::drawCircle(position.x, position.y,12,12,GREEN);
-	vec2 dirEnd = position + getDirection()* 20;
-	vec2 dirEnd2 = position - getDirection() * 20;
-	vec2 upEnd = position + perp(getDirection()) * 20;
-	vec2 upEnd2 = position - perp(getDirection()) * 20;
+	mat3 S = scale(m_scale.x, m_scale.y);
+	mat3 T = translate(m_position.x, m_position.y);
+	mat3 R = rotation(m_facing);
 
-	sfw::drawLine(position.x, position.y, dirEnd.x, dirEnd.y,RED );
-	sfw::drawLine(position.x, position.y, dirEnd2.x, dirEnd2.y,NONE);
-	sfw::drawLine(position.x, position.y, upEnd.x, upEnd.y, NONE);
-	sfw::drawLine(position.x, position.y, upEnd2.x, upEnd2.y, NONE);
+	return (T * S * R);
+}
 
+void Transform::debugDraw(const mat3 &T) const
+{
+	
+	
+	mat3 L = T * getLocalTransform();
+
+	vec3 pos = L[2];
+
+	vec3 right = pos + L * vec3{ 8,0,0 };
+	vec3 up    = pos + L * vec3{ 0,10,0 };
+
+	drawLine(pos.x, pos.y, right.x, right.y, RED);
+	drawLine(pos.x, pos.y, up.x, up.y, GREEN);
+
+	sfw::drawCircle(m_position.x, m_position.y, 12, 12, GREEN);
+	//vec2 dirEnd = m_position + getDirection()* 20;
+	//vec2 dirEnd2 = m_position - getDirection() * 20;
+	//vec2 upEnd = m_position + perp(getDirection()) * 20;
+	//vec2 upEnd2 = m_position - perp(getDirection()) * 20;
+
+	/*sfw::drawLine(m_position.x, m_position.y, dirEnd.x, dirEnd.y,RED );
+	sfw::drawLine(m_position.x, m_position.y, dirEnd2.x, dirEnd2.y,NONE);
+	sfw::drawLine(m_position.x, m_position.y, upEnd.x, upEnd.y, NONE);
+	sfw::drawLine(m_position.x, m_position.y, upEnd2.x, upEnd2.y, NONE);
+*/
 	
 	
 	
