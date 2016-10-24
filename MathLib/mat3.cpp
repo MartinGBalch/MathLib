@@ -1,4 +1,5 @@
 #include "mat3.h"
+#include "mat2.h"
 #include "flops.h"
 #include <cmath>
 
@@ -115,9 +116,9 @@ mat3 operator*(const mat3 & A, const mat3 & B)
 
 vec3 operator*(const mat3 & A, const vec3 & V)
 {
-	return{ ((A.m[0] * V.x) + (A.m[3] * V.x) + (A.m[6] * V.z)),
-			((A.m[1] * V.x) + (A.m[4] * V.x) + (A.m[7] * V.z)),
-			((A.m[2] * V.x) + (A.m[5] * V.x) + (A.m[8] * V.z))};
+	return{ ((A.m[0] * V.x) + (A.m[3] * V.y) + (A.m[6] * V.z)),
+			((A.m[1] * V.x) + (A.m[4] * V.y) + (A.m[7] * V.z)),
+			((A.m[2] * V.x) + (A.m[5] * V.y) + (A.m[8] * V.z))};
 }
 
 float determinate(const mat3 & d)
@@ -130,10 +131,24 @@ float determinate(const mat3 & d)
 				 (d.m[0] * d.m[7] * d.m[5]) ;
 }
 
-mat3 inverse(const mat3 & v)
+mat3 inverse(const mat3 & A)
 {
-	
-	return (1 / (determinate(v)) * transpose(v));
+	mat3 G =
+	{
+		determinate(mat2{ A.m[4],A.m[5],A.m[7],A.m[8] }),
+		determinate(mat2{ A.m[1],A.m[2],A.m[7],A.m[8] })*-1,//4
+		determinate(mat2{ A.m[1],A.m[2],A.m[4],A.m[5] }),//7
+
+		determinate(mat2{ A.m[3],A.m[5],A.m[6],A.m[8] })*-1,//2
+		determinate(mat2{ A.m[0],A.m[2],A.m[6],A.m[8] }),//5
+		determinate(mat2{ A.m[0],A.m[2],A.m[3],A.m[5] })*-1,//8
+
+		determinate(mat2{ A.m[3],A.m[4],A.m[6],A.m[7] }),//3
+		determinate(mat2{ A.m[0],A.m[1],A.m[6],A.m[7] })*-1,//6
+		determinate(mat2{ A.m[0],A.m[1],A.m[3],A.m[4] })
+	};
+
+	return (1 / determinate(A)) * G;
 }
 
 mat3 scale(float w, float h)

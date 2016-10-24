@@ -22,6 +22,6 @@ public:
 
 	void integrate(Transform &trans, float deltatime);
 
-	void debugDraw(const Transform &trans);
+	void debugDraw(const mat3& T, const Transform &trans);
 
 };

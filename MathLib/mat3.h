@@ -34,7 +34,7 @@ mat3 operator*(const mat3 &A, const mat3 &B);
 vec3 operator*(const mat3 &A, const vec3 &V);
 
 float determinate(const mat3 &d);
-mat3 inverse(const mat3 &v);
+mat3 inverse(const mat3 &A);
 
 mat3 scale(float w, float h);
 mat3 translate(float x, float y);
