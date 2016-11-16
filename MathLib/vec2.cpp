@@ -45,22 +45,22 @@ vec2 operator-(const vec2 & v)
 
 vec2 & operator+=(vec2 & lhs, const vec2 & rhs)
 {
-	return vec2{ lhs = lhs + rhs };
+	return lhs = lhs + rhs;
 }
 
 vec2 & operator-=(vec2 & lhs, const vec2 & rhs)
 {
-	return vec2{ lhs = lhs - rhs };
+	return lhs = lhs - rhs;
 }
 
-vec2 & operator*=(vec2 & lhs, const vec2 & rhs)
+vec2 & operator*=(vec2 & lhs, float rhs)
 {
-	return vec2{ lhs = lhs * rhs };
+	return lhs = lhs * rhs;
 }
 
 vec2 & operator/=(vec2 & lhs, const vec2 & rhs)
 {
-	return vec2{ lhs = lhs / rhs };
+	return  lhs = lhs / rhs ;
 }
 
 bool operator==(const vec2 & lhs, const vec2 & rhs)
@@ -173,6 +173,30 @@ vec2 catRomSpline(vec2 &point0, vec2 &point1, vec2 &point2, float t)
 	vec2 point = h00 * point0 + h10 * tangent0 + h01 * point1 + h11 * tangent1;
 
 	return point;
+}
+
+vec2 min(const vec2 & A, const vec2 & B)
+{
+	return vec2{ A.x < B.x ? A.x : B.x,
+				 A.y < B.y ? A.y : B.y };
+}
+
+vec2 max(const vec2 & A, const vec2 & B)
+{
+	return vec2{ A.x > B.x ? A.x : B.x,
+				 A.y > B.y ? A.y : B.y };
+}
+
+vec2 project(vec2 o, vec2 n)
+{
+	vec2 retval = dot(o, normal(n)) * normal(n);
+	return retval;
+}
+
+vec2 reflect(vec2 o, vec2 n)
+{
+	vec2 retval = o + 2 * project(o, n);
+	return retval;
 }
 
 float vec2::operator[](unsigned idx) const

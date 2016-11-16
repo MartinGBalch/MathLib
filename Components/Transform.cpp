@@ -3,6 +3,7 @@
 #include "mat3.h"
 #include <cmath>
 #include <cstdio>
+#include "shapedraw.h"
 using namespace sfw;
 
 Transform::Transform(float x, float y, float w, float h, float a) 
@@ -14,6 +15,8 @@ Transform::Transform(float x, float y, float w, float h, float a)
 	m_scale.y = h;
 
 	m_facing = a;
+
+	m_parent = nullptr;
 }
 
 vec2 Transform::getUp() const
@@ -78,14 +81,16 @@ void Transform::debugDraw(const mat3 &T) const
 	vec3 pos = L[2];
 	vec3 sgp = m_parent ? T*m_parent->getGlobalTransform()[2] : pos;
 
-	vec3 right = L * vec3{ 0,0,1 };
+	vec3 right = L * vec3{ 1,0,1 };
 	vec3 up    = L * vec3{ 0,1,1 };
 
-	drawLine(pos.x, pos.y, right.x, right.y, RED);
+	
+	/*drawLine(pos.x, pos.y, right.x, right.y, RED);
 	drawLine(pos.x, pos.y, up.x, up.y, GREEN);
-	drawLine(sgp.x, sgp.y, pos.x, pos.y, GREEN);
 
-	sfw::drawCircle(pos.x, pos.y, 12, 12, 0x888888FF);
+	sfw::drawLine(sgp.x, sgp.y, pos.x, pos.y, BLUE);
+*/
+	//drawCircle(L * Circle{ 0,0,10 }, 0x888888FF);
 	//vec2 dirEnd = m_position + getDirection()* 20;
 	//vec2 dirEnd2 = m_position - getDirection() * 20;
 	//vec2 upEnd = m_position + perp(getDirection()) * 20;

@@ -118,22 +118,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Astroids.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GravBullet.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="objectCollision.cpp" />
     <ClCompile Include="PlanetaryMotor.cpp" />
     <ClCompile Include="PlanetaryRenderer.cpp" />
+    <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="shapedraw.cpp" />
     <ClCompile Include="SpaceshipController.cpp" />
     <ClCompile Include="spaceShipLocomotion.cpp" />
     <ClCompile Include="SpaceshipRenderer.cpp" />
+    <ClCompile Include="TractorBeam.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Astroids.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GravBullet.h" />
+    <ClInclude Include="objectCollision.h" />
     <ClInclude Include="PlanetaryMotor.h" />
     <ClInclude Include="PlanetaryRenderer.h" />
+    <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="shapedraw.h" />
     <ClInclude Include="SpaceshipController.h" />
     <ClInclude Include="spaceShipLocomotion.h" />
     <ClInclude Include="SpaceshipRenderer.h" />
+    <ClInclude Include="TractorBeam.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

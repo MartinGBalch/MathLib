@@ -9,7 +9,7 @@ spaceShipLocomotion::spaceShipLocomotion()
 {
 	vertThrust = 0.0f;
 	horzThurst = 0.0f;
-	stopAction = 0.0f;
+	stopAction = 2.0f;
 	breakPower = 10.0f;
 
 	turnSpeed = 2.0f;
@@ -41,10 +41,10 @@ void spaceShipLocomotion::update(const Transform &trans, RigidBody &rigidbody)
 
 	horzThurst = vertThrust = stopAction = 0;
 		
-	if (rigidbody.velocity.x > 200.0f) rigidbody.velocity.x = 200.0f;
-	if (rigidbody.velocity.x < -200.0f) rigidbody.velocity.x = -200.0f;
-	if (rigidbody.velocity.y > 200.0f) rigidbody.velocity.y = 200.0f;
-	if (rigidbody.velocity.y < -200.0f) rigidbody.velocity.y = -200.0f;
+	if (rigidbody.velocity.x > 100.0f) rigidbody.velocity.x = 100.0f;
+	if (rigidbody.velocity.x < -100.0f) rigidbody.velocity.x = -100.0f;
+	if (rigidbody.velocity.y > 100.0f) rigidbody.velocity.y = 100.0f;
+	if (rigidbody.velocity.y < -100.0f) rigidbody.velocity.y = -100.0f;
 
 
 	//// zero out the thrust values
