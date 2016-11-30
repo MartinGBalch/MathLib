@@ -26,7 +26,7 @@ void RigidBody::addTorque(float a_torque)
 	torque += a_torque;
 }
 
-void RigidBody::integrate(Transform & trans, float deltatime)
+void RigidBody::integrate(Transform & trans, float deltatime, bool bounds)
 {
 	// perform euler integration! :0
 
@@ -44,6 +44,7 @@ void RigidBody::integrate(Transform & trans, float deltatime)
 	torque = 0;
 	torque = -angularVelocity * angularDrag;
 
+	
 }
 
 void RigidBody::debugDraw(const mat3& T, const Transform & trans)

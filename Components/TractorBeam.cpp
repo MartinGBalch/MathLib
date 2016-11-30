@@ -1,5 +1,6 @@
 #include "TractorBeam.h"
 #include "TractorBeam.h"
+#include "sfwdraw.h"
 
 TractorBeam::TractorBeam()
 {
@@ -7,7 +8,7 @@ TractorBeam::TractorBeam()
 	vec2 hullVrts[] = { { .1f,.3f },{ -.1f,.3f },{ -4.f,6.f },{ 4.f,6.f } };
 	collider = Collider(hullVrts, 4);
 
-	transform.m_scale = vec2{ 100,100 };
+	transform.m_scale = vec2{ 150,150 };
 	isAlive = false;
 	oneFrame = false;
 }
@@ -34,5 +35,5 @@ void TractorBeam::update(float deltaTime, GameState & gs)
 void TractorBeam::draw(const mat3 & camera)
 {
 	if (!isAlive) return;
-	collider.DebugDraw(camera, transform);
+	collider.DebugDraw(camera, transform, YELLOW);
 }

@@ -23,13 +23,13 @@ Collider::Collider(const vec2 * verts, int size) : hull(verts, size)
 	box.he = (boxMax - boxMin) / 2;
 }
 
-void Collider::DebugDraw(const mat3 & T, const Transform & trans)
+void Collider::DebugDraw(const mat3 & T, const Transform & trans, unsigned int color)
 {
 
 	// Draw the AABB
 		// Already have a draw AABB function
-	drawAABB(T * trans.getGlobalTransform() * box, WHITE);
-	drawHull(T * trans.getGlobalTransform() * hull, RED);
+	drawAABB(T * trans.getGlobalTransform() * box, NONE);
+	drawHull(T * trans.getGlobalTransform() * hull, color);
 
 	// Draw convex hull
 		// need a drawing function for hulls
@@ -46,7 +46,7 @@ CollisionData ColliderCollision(const Transform & AT, const Collider & AC, const
 				 BT.getGlobalTransform() * BC.box);
 
 	// narrow phase
-	if (retval.penetrationDepth >= 0 && !AC.isBox && !BC.isBox)
+	if (retval.penetrationDepth >= 0 )
 	{
 		retval = HullCollision(AT.getGlobalTransform() * AC.hull,
 							   BT.getGlobalTransform() * BC.hull);

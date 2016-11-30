@@ -3,18 +3,19 @@
 #include "Collider.h"
 #include "RigidBody.h"
 
-class Astroid
+class Target
 {
 public:
-	Transform transform;
+	Transform trans;
 	Collider collider;
-	RigidBody rigidbody;
+	RigidBody rigid;
 
-	float slowdown;
+	unsigned int color;
+	int hp;
 
-	Astroid();
+
+	Target();
 
 	void update(float deltaTime, class GameState &gs);
 	void draw(const mat3 &camera);
-	
 };

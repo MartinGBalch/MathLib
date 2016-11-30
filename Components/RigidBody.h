@@ -20,7 +20,7 @@ public:
 	void addImpulse(const vec2 &a_impulse);
 	void addTorque(float a_torque);
 
-	void integrate(Transform &trans, float deltatime);
+	void integrate(Transform &trans, float deltatime, bool bounds = true);
 
 	void debugDraw(const mat3& T, const Transform &trans);
 

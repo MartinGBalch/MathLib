@@ -4,6 +4,7 @@
 #include "GravBullet.h"
 #include "Astroids.h"
 #include "TractorBeam.h"
+#include "Target.h"
 /*
 Basic structure of an application state.
 Whether it's a menu, game, pause, victory screen;
@@ -41,8 +42,9 @@ public:
 	PlayerShip player;
 	Camera camera;
 	GravBullet bullet;
-	Astroid asteriod[2];
+	Astroid asteriod[10];
 	TractorBeam tractor;
+	Target target[5];
 
 	
 	void play();

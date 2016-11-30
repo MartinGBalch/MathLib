@@ -4,6 +4,7 @@
 #include "PlayerShip.h"
 #include "GravBullet.h"
 #include "TractorBeam.h"
+#include "Target.h"
 
 /*
 These are interactions between objects.
@@ -17,8 +18,9 @@ void PlayerAstroidCollision(PlayerShip &player, Astroid &as);
 
 void AstroidCollision(Astroid &as1, Astroid &as2);
 
+void targetAstroidCollision(Target &t, Astroid &a);
 
 
+void BulletAsteroidCollision(GravBullet &bullet, Astroid &asteroid);
 
-void BulletAsteroidCollision(GravBullet &bullet, Astroid &asteroid, TractorBeam &tractor);
-void TractorAsteroidCollision(TractorBeam &tractor, Astroid &asteroid);
+void TractorBulletCollision(TractorBeam &tractor, GravBullet &bullet);

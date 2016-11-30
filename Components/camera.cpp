@@ -4,7 +4,7 @@
 Camera::Camera()
 {
 	//edit
-	projection = translate(600, 600) * scale(.5, .5);
+	projection = translate(960, 115) * scale(.5,.5);
 }
 
 mat3 Camera::getCameraMatrix()
@@ -14,5 +14,8 @@ mat3 Camera::getCameraMatrix()
 
 void Camera::update(float deltaTime, GameState & gs)
 {
-	transform.m_position = gs.player.transform.getGlobalPosition();
+	transform.m_position = lerp(transform.m_position,
+		gs.player.transform.getGlobalPosition(), 0.3f);
+
+	
 }
