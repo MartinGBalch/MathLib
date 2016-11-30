@@ -38,9 +38,10 @@ void targetAstroidCollision(Target & t, Astroid & a)
 		//t.trans.m_scale *= .5f;
 		t.hp -= 1.f;
 	}
-	if (t.hp >= 375) { t.color = WHITE; }
-	else if( t.hp >= 185 ) {t.color = MAGENTA;}
+	if (t.hp >= 800) { t.color = WHITE; }
+	else if( t.hp >= 325 ) {t.color = MAGENTA;}
 	else { t.color = RED; }
+	if (t.hp <= -325) { t.trans.m_scale *= .1f; }
 	
 }
 
@@ -100,4 +101,14 @@ void TractorBulletCollision(TractorBeam & tractor, GravBullet &bullet)
 		bullet.rigidbody.addImpulse(dir * 5);
 		// If we flip the force, we can push stuff away.
 	}
+}
+
+void BulletTargetCollision(GravBullet & b, Target & t)
+{
+	CollisionData result =
+		DynamicResolution(b.transform, b.rigidbody, b.collider,
+			t.trans, t.rigid, t.collider);
+
+	
+
 }

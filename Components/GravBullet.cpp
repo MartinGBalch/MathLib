@@ -34,6 +34,6 @@ void GravBullet::draw(const mat3 & camera)
 	if (!isAlive) return;
 
 	//transform.debugDraw(camera);
-	collider.DebugDraw(camera, transform, BLUE);
+	collider.DebugDraw(camera, transform, GREEN);
 	//rigidbody.debugDraw(camera, transform);
 }

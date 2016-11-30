@@ -42,7 +42,7 @@ public:
 	PlayerShip player;
 	Camera camera;
 	GravBullet bullet;
-	Astroid asteriod[10];
+	Astroid asteriod[30];
 	TractorBeam tractor;
 	Target target[5];
 

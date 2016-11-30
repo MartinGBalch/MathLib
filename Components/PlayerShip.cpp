@@ -50,6 +50,6 @@ void PlayerShip::update(float deltaTime, GameState & gs)
 void PlayerShip::draw(const mat3 & camera)
 {
 	//transform.debugDraw(camera);
-	collider.DebugDraw(camera, transform, CYAN);
+	collider.DebugDraw(camera, transform, BLUE);
 	//rigidbody.debugDraw(camera, transform);
 }

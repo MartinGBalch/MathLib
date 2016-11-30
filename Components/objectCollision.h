@@ -24,3 +24,5 @@ void targetAstroidCollision(Target &t, Astroid &a);
 void BulletAsteroidCollision(GravBullet &bullet, Astroid &asteroid);
 
 void TractorBulletCollision(TractorBeam &tractor, GravBullet &bullet);
+
+void BulletTargetCollision(GravBullet &b, Target &t);
